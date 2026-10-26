@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.db
+*.db-wal
+*.db-shm
+*.bin
+*.csv
+netmon/web/fonts/*.woff2
+.DS_Store
+.vscode/
+.idea/

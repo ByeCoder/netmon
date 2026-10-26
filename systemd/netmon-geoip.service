@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh NetMon country database
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/netmon
+ExecStart=/usr/bin/python3 -m netmon geoip-update
+ExecStartPost=/bin/systemctl try-restart netmon.service
+Nice=10
+TimeoutStartSec=15min

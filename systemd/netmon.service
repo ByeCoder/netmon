@@ -1,0 +1,21 @@
+[Unit]
+Description=NetMon traffic monitor, firewall and web panel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/netmon
+ExecStart=/usr/bin/python3 -m netmon run
+Environment=PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+Restart=always
+RestartSec=3
+# Root is required: it reads all connections and manages iptables.
+User=root
+Nice=5
+IOSchedulingClass=idle
+MemoryHigh=120M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

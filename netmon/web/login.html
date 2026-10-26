@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Sign in · NetMon</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/theme.js"></script>
+</head>
+<body class="login-body">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 32 32"><rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="none" stroke="currentColor" stroke-opacity=".35"/><path d="M5 18h4l3-9 4 15 3-11 2 5h6" fill="none" stroke="var(--rx)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<div class="login">
+  <div class="brand"><svg><use href="#i-logo"/></svg><b>NetMon</b></div>
+  <form class="panel" id="f" autocomplete="on">
+    <svg class="login-trace" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 L60 30 L80 12 L100 38 L120 22 L150 26 L170 8 L190 34 L220 24 L260 28 L280 14 L300 32 L330 26 L400 26" fill="none" stroke="var(--rx)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      <path d="M0 36 L70 36 L95 28 L120 40 L160 32 L200 38 L240 30 L270 36 L310 33 L350 37 L400 34" fill="none" stroke="var(--tx)" stroke-width="1.6" stroke-opacity=".8" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <h1 style="font-size:22px">Sign in</h1>
+    <div class="field"><label for="u">Username</label><input type="text" id="u" name="user" autocomplete="username" required autofocus></div>
+    <div class="field"><label for="p">Password</label><input type="password" id="p" name="password" autocomplete="current-password" required></div>
+    <div class="err" id="err" role="alert"></div>
+    <button class="btn primary" type="submit" id="go">Sign in</button>
+  </form>
+</div>
+<script src="/static/login.js"></script>
+</body>
+</html>

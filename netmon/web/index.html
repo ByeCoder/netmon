@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>NetMon</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/static/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/theme.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 32 32"><rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="none" stroke="currentColor" stroke-opacity=".35"/><path d="M5 18h4l3-9 4 15 3-11 2 5h6" fill="none" stroke="var(--rx)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l4-5 3 3 5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-ports" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 10v4M11 10v4M15 10v4M19 10v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="13" width="16" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="7.5" r="1" fill="currentColor"/><circle cx="8" cy="16.5" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 16l4-4-4-4M14 12H4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 7.5-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="app">
+  <aside class="rail">
+    <div class="brand"><svg><use href="#i-logo"/></svg><div><b>NetMon</b><small id="host">server console</small></div></div>
+    <nav class="nav" aria-label="Sections">
+      <button data-page="overview" aria-current="page"><svg><use href="#i-pulse"/></svg>Overview</button>
+      <button data-page="traffic"><svg><use href="#i-chart"/></svg>Traffic</button>
+      <button data-page="ports"><svg><use href="#i-ports"/></svg>Ports</button>
+      <button data-page="countries"><svg><use href="#i-globe"/></svg>Countries</button>
+      <button data-page="protocols"><svg><use href="#i-layers"/></svg>Protocols</button>
+      <button data-page="firewall"><svg><use href="#i-shield"/></svg>Firewall</button>
+      <button data-page="system"><svg><use href="#i-server"/></svg>System</button>
+    </nav>
+    <div class="rail-foot">
+      <div class="rail-live" aria-live="off">
+        <div><span>Download</span><b class="rx" id="rl-rx">–</b></div>
+        <div><span>Upload</span><b class="tx" id="rl-tx">–</b></div>
+      </div>
+      <div class="rail-tools">
+        <button class="icon-btn" id="themeBtn" type="button" title="Switch day / night"><svg><use href="#i-moon"/></svg><span>Theme</span></button>
+        <a class="icon-btn" href="/logout" title="Sign out"><svg><use href="#i-out"/></svg><span>Sign out</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+  <!-- ============================================================ OVERVIEW -->
+  <section class="page on" id="p-overview">
+    <div class="scope">
+      <div class="scope-read">
+        <div class="lbl"><span class="dot" id="live-dot"></span><span id="live-lbl">Live, 1-second samples</span></div>
+        <div>
+          <div class="lbl">Download</div>
+          <div class="big rx"><span class="arrow">↓</span><span id="lv-rx">–</span></div>
+        </div>
+        <div>
+          <div class="lbl">Upload</div>
+          <div class="big tx"><span class="arrow">↑</span><span id="lv-tx">–</span></div>
+        </div>
+        <div class="scope-meta">
+          <div>Connections<b id="lv-conn">–</b></div>
+          <div>New per second<b id="lv-new">–</b></div>
+          <div>Record download<b class="rx" id="lv-prx">–</b></div>
+          <div>Record upload<b class="tx" id="lv-ptx">–</b></div>
+        </div>
+      </div>
+      <div class="scope-trace" id="scope"><div class="scale" id="scope-scale"></div><div class="tl">last 2 minutes</div></div>
+    </div>
+
+    <div class="panel totals" id="totals"></div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-head">
+        <div><h2>Traffic history</h2><div class="sub" id="ov-sub">Average speed per interval, with 1-second peaks</div></div>
+        <div class="controls">
+          <div class="seg" id="ov-metric"><button data-v="speed" aria-pressed="true">Speed</button><button data-v="volume">Volume</button></div>
+          <div class="seg" id="ov-win"><button data-v="1h">1h</button><button data-v="6h">6h</button><button data-v="24h" aria-pressed="true">24h</button><button data-v="7d">7d</button><button data-v="30d">30d</button></div>
+        </div>
+      </div>
+      <div id="ov-chart"></div>
+    </div>
+
+    <div class="grid g4" id="ov-hl"></div>
+
+    <div class="grid g3">
+      <div class="panel"><div class="panel-head"><h2>Busiest ports, 24h</h2><button class="btn sm ghost" data-goto="ports">All ports</button></div><ul class="rank-list" id="ov-ports"></ul></div>
+      <div class="panel"><div class="panel-head"><h2>Top countries, 24h</h2><button class="btn sm ghost" data-goto="countries">All countries</button></div><ul class="rank-list" id="ov-cc"></ul></div>
+      <div class="panel"><div class="panel-head"><h2>Protocol mix, 24h</h2><div class="seg" id="ov-pmode"><button data-v="bytes" aria-pressed="true">Traffic</button><button data-v="req">Requests</button></div></div><div id="ov-donut"></div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ TRAFFIC -->
+  <section class="page" id="p-traffic">
+    <div class="page-head">
+      <div><h1>Traffic</h1><p>Full detail for the last 24 hours, hourly for 30 days. Drag across a chart to zoom, double-click to reset.</p></div>
+      <div class="controls">
+        <div class="seg" id="tr-win"><button data-v="15m">15m</button><button data-v="1h">1h</button><button data-v="6h">6h</button><button data-v="24h" aria-pressed="true">24h</button><button data-v="today">Today</button><button data-v="yesterday">Yesterday</button><button data-v="7d">7d</button><button data-v="30d">30d</button></div>
+        <div class="seg" id="tr-step"></div>
+      </div>
+    </div>
+    <div class="grid g4" id="tr-tiles"></div>
+    <div class="panel" style="margin-bottom:16px"><div class="panel-head"><div><h2>Speed</h2><div class="sub">Average per interval and the highest 1-second speed inside it</div></div></div><div id="tr-speed"></div></div>
+    <div class="grid g2">
+      <div class="panel"><div class="panel-head"><div><h2>Volume</h2><div class="sub">Bytes transferred per interval</div></div></div><div id="tr-vol"></div></div>
+      <div class="panel"><div class="panel-head"><div><h2>Connections</h2><div class="sub">New requests per interval, and open connections</div></div></div><div id="tr-conn"></div></div>
+    </div>
+    <div class="panel"><div class="panel-head"><div><h2>Last 30 days, per day</h2><div class="sub">Daily download and upload totals</div></div><div class="seg" id="tr-dmode"><button data-v="vol" aria-pressed="true">Volume</button><button data-v="peak">Peak speed</button></div></div><div id="tr-daily"></div></div>
+  </section>
+
+  <!-- ============================================================ PORTS -->
+  <section class="page" id="p-ports">
+    <div class="page-head">
+      <div><h1>Ports</h1><p>Inbound ports are services on this server; outbound ports are remote ports it connects to.</p></div>
+      <div class="controls">
+        <div class="seg" id="po-win"><button data-v="1h">1h</button><button data-v="today">Today</button><button data-v="24h" aria-pressed="true">24h</button><button data-v="7d">Week</button><button data-v="30d">30 days</button></div>
+      </div>
+    </div>
+    <div class="grid g3" id="po-hl"></div>
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-head">
+        <h2>Ranking</h2>
+        <div class="controls">
+          <div class="seg" id="po-role"><button data-v="" aria-pressed="true">All</button><button data-v="0">Inbound</button><button data-v="1">Outbound</button></div>
+          <div class="seg" id="po-sort"><button data-v="total" aria-pressed="true">Traffic</button><button data-v="rx">Download</button><button data-v="tx">Upload</button><button data-v="req">Requests</button><button data-v="peak">Peak speed</button></div>
+        </div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>Port</th><th>Service</th><th>Direction</th><th class="n">Download</th><th class="n">Upload</th><th class="n">Total</th><th>Split</th><th class="n">Requests</th><th class="n">Peak ↓</th><th class="n">Peak ↑</th></tr></thead>
+        <tbody id="po-rows"></tbody>
+      </table></div>
+    </div>
+    <div class="panel" id="po-detail" hidden>
+      <div class="panel-head"><div><h2 id="po-dt">Port</h2><div class="sub">Pick another row in the ranking to compare</div></div><div class="seg" id="po-dmode"><button data-v="speed" aria-pressed="true">Speed</button><button data-v="volume">Volume</button><button data-v="req">Requests</button></div></div>
+      <div id="po-chart"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ COUNTRIES -->
+  <section class="page" id="p-countries">
+    <div class="page-head">
+      <div><h1>Countries</h1><p>New connections by country, looked up offline from each remote IP.</p></div>
+      <div class="controls">
+        <div class="seg" id="cc-dir"><button data-v="0" aria-pressed="true">Incoming</button><button data-v="1">Outgoing</button></div>
+        <div class="seg" id="cc-win"><button data-v="1h">1h</button><button data-v="today">Today</button><button data-v="24h" aria-pressed="true">24h</button><button data-v="7d">Week</button><button data-v="30d">30 days</button></div>
+      </div>
+    </div>
+    <div class="grid g-12">
+      <div class="panel"><div class="panel-head"><h2>Ranking</h2><span class="faint" id="cc-count"></span></div><ul class="rank-list" id="cc-list"></ul></div>
+      <div class="stack">
+        <div class="panel"><div class="panel-head"><div><h2>Top countries over time</h2><div class="sub">New connections per interval</div></div></div><div id="cc-chart"></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Connected right now</h2><div class="sub">Remote IPs with the most open inbound connections</div></div></div>
+          <div class="tbl-wrap"><table><thead><tr><th>IP address</th><th>Country</th><th class="n">Connections</th><th></th></tr></thead><tbody id="cc-ips"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ PROTOCOLS -->
+  <section class="page" id="p-protocols">
+    <div class="page-head">
+      <div><h1>Protocols</h1><p>Download, upload, packets and requests for every IP protocol, counted by the kernel.</p></div>
+      <div class="controls"><div class="seg" id="pr-win"><button data-v="1h">1h</button><button data-v="today">Today</button><button data-v="24h" aria-pressed="true">24h</button><button data-v="7d">Week</button><button data-v="30d">30 days</button></div></div>
+    </div>
+    <div class="proto-grid" id="pr-cards"></div>
+    <div class="grid g2">
+      <div class="panel"><div class="panel-head"><h2>Share of traffic</h2></div><div id="pr-d1"></div></div>
+      <div class="panel"><div class="panel-head"><h2>Share of requests</h2></div><div id="pr-d2"></div></div>
+    </div>
+    <div class="panel" style="margin-bottom:16px"><div class="panel-head"><div><h2>Traffic by protocol</h2><div class="sub">Download and upload combined, stacked</div></div><div class="seg" id="pr-dir"><button data-v="both" aria-pressed="true">Both</button><button data-v="rx">Download</button><button data-v="tx">Upload</button></div></div><div id="pr-chart"></div></div>
+    <div class="panel"><div class="panel-head"><div><h2>Requests by protocol</h2><div class="sub">New connections per interval, stacked</div></div></div><div id="pr-req"></div></div>
+  </section>
+
+  <!-- ============================================================ FIREWALL -->
+  <section class="page" id="p-firewall">
+    <div class="page-head">
+      <div><h1>Firewall</h1><p>Everything is open unless you close it here. Changes apply instantly and survive reboots.</p></div>
+      <div class="controls"><span class="chip" id="fw-me"></span></div>
+    </div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="ssh-card">
+        <div class="ssh-state" id="ssh-ico"><svg><use href="#i-unlock"/></svg></div>
+        <div><h2 id="ssh-title">SSH is open</h2><div class="dim" id="ssh-sub"></div></div>
+        <label class="sw" title="SSH on port 22"><input type="checkbox" id="ssh-sw" aria-label="SSH port 22 open"><span></span></label>
+      </div>
+      <div class="note" id="ssh-note" style="margin-top:14px" hidden></div>
+    </div>
+
+    <div class="grid g2">
+      <div class="panel">
+        <div class="panel-head"><div><h2>Close ports</h2><div class="sub">A single port or a whole range</div></div><div class="seg" id="bk-kind"><button data-v="single" aria-pressed="true">Single port</button><button data-v="range">Range</button></div></div>
+        <div class="row">
+          <div class="field" id="bk-single"><label for="bk-port">Port</label><input type="number" id="bk-port" min="1" max="65535" placeholder="4444"></div>
+          <div class="field" id="bk-from" hidden><label for="bk-lo">From</label><input type="number" id="bk-lo" min="1" max="65535" placeholder="10000"></div>
+          <div class="field" id="bk-to" hidden><label for="bk-hi">To</label><input type="number" id="bk-hi" min="1" max="65535" placeholder="20000"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="bk-proto">Protocol</label><select id="bk-proto"><option value="both">TCP and UDP</option><option value="tcp">TCP</option><option value="udp">UDP</option></select></div>
+          <div class="field"><label for="bk-dir">Direction</label><select id="bk-dir"><option value="in">Incoming</option><option value="out">Outgoing</option><option value="both">Both</option></select></div>
+          <div class="field"><label for="bk-label">Note</label><input type="text" id="bk-label" maxlength="40" placeholder="optional"></div>
+        </div>
+        <div class="row" style="justify-content:space-between;align-items:center">
+          <label class="dim" style="display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" id="bk-kill" checked> Also cut connections already open</label>
+          <button class="btn danger" id="bk-go" type="button"><svg width="16" height="16"><use href="#i-lock"/></svg>Close</button>
+        </div>
+        <p class="help">The panel port stays reachable whatever you close, so you can't lock yourself out of this page.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div><h2>Open a single port</h2><div class="sub">Removes its block, or punches a hole in a closed range</div></div></div>
+        <div class="row">
+          <div class="field"><label for="op-port">Port</label><input type="number" id="op-port" min="1" max="65535" placeholder="3306"></div>
+          <div class="field"><label for="op-proto">Protocol</label><select id="op-proto"><option value="both">TCP and UDP</option><option value="tcp">TCP</option><option value="udp">UDP</option></select></div>
+          <button class="btn ok" id="op-go" type="button"><svg width="16" height="16"><use href="#i-unlock"/></svg>Open</button>
+        </div>
+        <div style="margin-top:22px">
+          <div class="panel-head" style="margin-bottom:10px"><div><h2>Block an IP</h2><div class="sub">Drops all traffic from and to an address or CIDR</div></div></div>
+          <div class="row">
+            <div class="field"><label for="ip-cidr">IP or CIDR</label><input type="text" id="ip-cidr" placeholder="203.0.113.7 or 203.0.113.0/24"></div>
+            <div class="field"><label for="ip-label">Note</label><input type="text" id="ip-label" maxlength="40" placeholder="optional"></div>
+            <button class="btn danger" id="ip-go" type="button">Block IP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="panel"><div class="panel-head"><h2>Active rules</h2><span class="faint" id="rules-count"></span></div><ul class="rules" id="rules"></ul></div>
+      <div class="stack">
+        <div class="panel">
+          <div class="panel-head"><div><h2>Never block</h2><div class="sub">Whitelisted IPs skip every block and the rate limit</div></div><button class="btn sm" id="wl-me" type="button">Add my IP</button></div>
+          <div class="row"><div class="field"><label for="wl-ip">IP or CIDR</label><input type="text" id="wl-ip" placeholder="your tunnel server or home IP"></div><button class="btn" id="wl-add" type="button">Add</button></div>
+          <div class="chips" id="wl-list" style="margin-top:12px"></div>
+          <div class="row" style="margin-top:16px"><div class="field"><label for="tp-in">Tunnel ports, never rate-limited</label><input type="text" id="tp-in" placeholder="443, 2053, 51820"></div><button class="btn" id="tp-save" type="button">Save</button></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><h2>Flood protection</h2><div class="sub">Drops only excess new TCP connections from a single IP</div></div><label class="sw"><input type="checkbox" id="rl-on" aria-label="Flood protection"><span></span></label></div>
+          <div class="row">
+            <div class="field"><label for="rl-rate">New per second, per IP</label><input type="number" id="rl-rate" min="1"></div>
+            <div class="field"><label for="rl-burst">Burst</label><input type="number" id="rl-burst" min="1"></div>
+            <div class="field"><label for="rl-max">Open per IP</label><input type="number" id="rl-max" min="0"></div>
+            <button class="btn" id="rl-save" type="button">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-head"><div><h2>Well-known ports</h2><div class="sub">Grouped by what they do. A green dot means something on this server is listening.</div></div></div>
+      <div id="wk"></div>
+    </div>
+
+    <div class="panel"><div class="panel-head"><h2>Activity</h2></div><ul class="log" id="fw-log"></ul></div>
+  </section>
+
+  <!-- ============================================================ SYSTEM -->
+  <section class="page" id="p-system">
+    <div class="page-head"><div><h1>System</h1><p id="sys-sub"></p></div><button class="btn" id="pw-open" type="button"><svg width="16" height="16"><use href="#i-key"/></svg>Change password</button></div>
+    <div class="grid g4" id="sys-tiles"></div>
+    <div class="grid g-12">
+      <div class="stack">
+        <div class="panel"><div class="panel-head"><h2>NetMon</h2></div><dl class="proto" style="box-shadow:none;padding:0" id="sys-nm"></dl></div>
+        <div class="panel"><div class="panel-head"><h2>Interfaces</h2></div><div class="tbl-wrap"><table><thead><tr><th>Name</th><th>Address</th><th class="n">Received</th><th class="n">Sent</th></tr></thead><tbody id="sys-if"></tbody></table></div></div>
+      </div>
+      <div class="panel"><div class="panel-head"><div><h2>Listening services</h2><div class="sub">Open sockets on this server and the program behind each</div></div></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Port</th><th>Protocol</th><th>Program</th><th>Bound to</th><th>Firewall</th></tr></thead><tbody id="sys-ls"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+  </main>
+</div>
+
+<dialog id="pw-dlg">
+  <form method="dialog" id="pw-form">
+    <h2>Change admin login</h2>
+    <div class="field"><label for="pw-user">Username</label><input type="text" id="pw-user" autocomplete="username"></div>
+    <div class="field"><label for="pw-cur">Current password</label><input type="password" id="pw-cur" autocomplete="current-password" required></div>
+    <div class="field"><label for="pw-new">New password, at least 8 characters</label><input type="password" id="pw-new" autocomplete="new-password" minlength="8" required></div>
+    <div class="acts"><button class="btn ghost" value="cancel" formnovalidate type="submit">Cancel</button><button class="btn primary" id="pw-save" value="save" type="submit">Save</button></div>
+  </form>
+</dialog>
+
+<dialog id="confirm-dlg">
+  <form method="dialog">
+    <h2 id="cf-title">Are you sure?</h2>
+    <p class="dim" id="cf-body" style="margin:0"></p>
+    <div class="acts"><button class="btn ghost" value="no" type="submit">Cancel</button><button class="btn danger" value="yes" id="cf-yes" type="submit">Confirm</button></div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/static/scope.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
