@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # NetMon one-line installer.
-#   sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/USERNAME/netmon/main/get.sh)"
+#   sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/ByeCoder/netmon/main/get.sh)"
 # Downloads the repository and runs install.sh. Same env vars as install.sh
 # (NETMON_USER, NETMON_PASS, NETMON_PORT) work here too.
 set -euo pipefail
 
-REPO="${NETMON_REPO:-USERNAME/netmon}"
+REPO="${NETMON_REPO:-ByeCoder/netmon}"
 BRANCH="${NETMON_BRANCH:-main}"
 
 [ "$(id -u)" = 0 ] || { echo "Run as root:  sudo bash -c \"\$(curl -fsSL .../get.sh)\""; exit 1; }

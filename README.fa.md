@@ -45,7 +45,7 @@
 <div dir="ltr">
 
 ```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/USERNAME/netmon/main/get.sh)"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/ByeCoder/netmon/main/get.sh)"
 ```
 
 </div>
@@ -55,7 +55,7 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/USERNAME/netmon/mai
 <div dir="ltr">
 
 ```bash
-git clone https://github.com/USERNAME/netmon.git
+git clone https://github.com/ByeCoder/netmon.git
 cd netmon
 sudo bash install.sh
 ```

@@ -48,13 +48,13 @@ and a firewall you can drive from your browser. Pure Python standard library + S
 On Ubuntu 20.04+ or Debian 11+, as root:
 
 ```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/USERNAME/netmon/main/get.sh)"
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/ByeCoder/netmon/main/get.sh)"
 ```
 
 Or from a clone:
 
 ```bash
-git clone https://github.com/USERNAME/netmon.git
+git clone https://github.com/ByeCoder/netmon.git
 cd netmon
 sudo bash install.sh
 ```
